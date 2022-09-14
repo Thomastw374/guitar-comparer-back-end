@@ -1,13 +1,13 @@
 package com.example.guitarsuggester;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Random;
 
 @Entity
+@Table(name = "user_guitar")
 public class UserGuitar {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     protected int id;
     protected String guitarName;
     protected String guitarPrice;
@@ -18,13 +18,34 @@ public class UserGuitar {
     public UserGuitar() {
     }
 
-    public UserGuitar(int id, String guitarName, String guitarPrice, String guitarPicUrl, String guitarDescription) {
+    public UserGuitar(int id, String guitarName, String guitarPrice, String guitarPicUrl, String guitarDescription, String userKey) {
         this.id = id;
         this.guitarName = guitarName;
         this.guitarPrice = guitarPrice;
         this.guitarPicUrl = guitarPicUrl;
         this.guitarDescription = guitarDescription;
         this.userKey = userKey;
+    }
+
+    public UserGuitar(int id, String guitarName, String guitarPrice, String guitarPicUrl, String guitarDescription) {
+        this.id = id;
+        this.guitarName = guitarName;
+        this.guitarPrice = guitarPrice;
+        this.guitarPicUrl = guitarPicUrl;
+        this.guitarDescription = guitarDescription;
+        this.userKey = generateUserKey();
+    }
+
+    public static String generateUserKey() {
+        String userKey = "";
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+
+        for (int i = 0; i <= 32; i++) {
+            Random random = new Random();
+            userKey += characters.charAt(random.nextInt(characters.length()));
+        }
+
+        return userKey;
     }
 
     public int getId() {
@@ -74,4 +95,5 @@ public class UserGuitar {
     public void setUserKey(String userKey) {
         this.userKey = userKey;
     }
+
 }

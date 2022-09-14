@@ -17,11 +17,20 @@ public class GuitarSuggesterController {
     GuitarSuggesterRepository guitarSuggesterRepository;
 
     @Autowired
+    UserGuitarRepository userGuitarRepository;
+
+    @Autowired
     GuitarSuggesterService guitarSuggesterService;
 
     @GetMapping("/guitars")
     public ResponseEntity<List<Guitar>> getAllGuitars() {
         List<Guitar> allGuitars = guitarSuggesterService.getAllGuitars();
+        return ResponseEntity.status(HttpStatus.OK).body(allGuitars);
+    }
+
+    @GetMapping("/user-guitars")
+    public ResponseEntity<List<UserGuitar>> getAllUserGuitars() {
+        List<UserGuitar> allGuitars = userGuitarRepository.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(allGuitars);
     }
 
