@@ -1,36 +1,17 @@
 package com.example.guitarsuggester;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-@Entity
-public class Guitar {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int id;
+public class NewUserGuitar {
     protected String guitarName;
     protected String guitarPrice;
     protected String guitarPicUrl;
     protected String guitarDescription;
 
-    public Guitar() {
-    }
-
-    public Guitar(String guitarName, String guitarPrice, String guitarPicUrl, String guitarDescription) {
+    public NewUserGuitar(String guitarName, String guitarPrice, String guitarPicUrl, String guitarDescription) {
         this.guitarName = guitarName;
         this.guitarPrice = guitarPrice;
         this.guitarPicUrl = guitarPicUrl;
         this.guitarDescription = guitarDescription;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getGuitarName() {
@@ -64,5 +45,4 @@ public class Guitar {
     public void setGuitarDescription(String guitarDescription) {
         this.guitarDescription = guitarDescription;
     }
-
 }

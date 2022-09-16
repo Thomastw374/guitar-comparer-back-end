@@ -9,5 +9,7 @@ import java.util.List;
 @Repository
 public interface UserGuitarRepository extends JpaRepository<UserGuitar, Integer> {
 
+    @Query("FROM UserGuitar WHERE userKey = ?1")
+    List<UserGuitar> findUserGuitarsByUserKey(String userKey);
 
 }

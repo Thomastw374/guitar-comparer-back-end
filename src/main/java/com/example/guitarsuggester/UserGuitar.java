@@ -7,7 +7,7 @@ import java.util.Random;
 @Table(name = "user_guitar")
 public class UserGuitar {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
     protected String guitarName;
     protected String guitarPrice;
@@ -16,6 +16,14 @@ public class UserGuitar {
     protected String userKey;
 
     public UserGuitar() {
+    }
+
+    public UserGuitar(String guitarName, String guitarPrice, String guitarPicUrl, String guitarDescription, String userKey) {
+        this.guitarName = guitarName;
+        this.guitarPrice = guitarPrice;
+        this.guitarPicUrl = guitarPicUrl;
+        this.guitarDescription = guitarDescription;
+        this.userKey = userKey;
     }
 
     public UserGuitar(int id, String guitarName, String guitarPrice, String guitarPicUrl, String guitarDescription, String userKey) {
@@ -27,8 +35,7 @@ public class UserGuitar {
         this.userKey = userKey;
     }
 
-    public UserGuitar(int id, String guitarName, String guitarPrice, String guitarPicUrl, String guitarDescription) {
-        this.id = id;
+    public UserGuitar(String guitarName, String guitarPrice, String guitarPicUrl, String guitarDescription) {
         this.guitarName = guitarName;
         this.guitarPrice = guitarPrice;
         this.guitarPicUrl = guitarPicUrl;
