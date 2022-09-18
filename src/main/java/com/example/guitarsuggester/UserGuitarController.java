@@ -36,7 +36,7 @@ public class UserGuitarController {
         boolean isCreated = userGuitarService.createUserGuitarAndUser(userGuitar);
 
         if (isCreated) {
-            return ResponseEntity.status(HttpStatus.OK).body("Created Successfully");
+            return ResponseEntity.status(HttpStatus.OK).body(userGuitar.userKey);
         }
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Please enter all of the guitars details");
